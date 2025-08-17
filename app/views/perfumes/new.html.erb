@@ -1,0 +1,137 @@
+<style>
+  .perfume-container {
+    background-color: #fefefe;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 800px;
+    margin: 30px auto;
+    font-family: sans-serif;
+  }
+
+  .question-section {
+    margin-bottom: 30px;
+  }
+
+  .question-section h4 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+
+  .form-check {
+    margin-bottom: 10px;
+  }
+
+  .form-check input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+  }
+
+  .form-check label {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .sindanbotan {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .sindanbotan input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .sindanbotan input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  .back-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .back-link a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .back-link a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<%= form_for(@perfume, class: 'form-horizontal', role: 'form') do |f| %>
+  <div class="perfume-container">
+    
+    <!-- Q1 -->
+    <div class="question-section">
+      <h4>Q1. あなたはどんな気分ですか？</h4>
+      <% options = [
+        ["1", "じっくりと知識を深めたい"],
+        ["2", "珍しいものを見てワクワクしたい"],
+        ["3", "アートに浸りたい"],
+        ["4", "体験を通して学びたい"],
+        ["5", "子どもと一緒に楽しみたい"]
+      ] %>
+      <% options.each_with_index do |(val, label), i| %>
+        <div class="form-check">
+          <%= f.radio_button :question1, val, id: "question1_option#{i}" %>
+          <label for="question1_option#{i}"><%= label %></label>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-section">
+      <h4>Q2. どんな分野に興味がありますか？</h4>
+      <% options = [
+        ["1", "歴史・民俗学・郷土資料"],
+        ["2", "科学・技術"],
+        ["3", "美術"],
+        ["4", "自然・動物・植物"],
+        ["5", "文書・文学"],
+        ["6", "特定のテーマ（鉄道、産業など）"]
+      ] %>
+      <% options.each_with_index do |(val, label), i| %>
+        <div class="form-check">
+          <%= f.radio_button :question2, val, id: "question2_option#{i}" %>
+          <label for="question2_option#{i}"><%= label %></label>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-section">
+      <h4>Q3. 群馬県内のどこの地域を訪れたいですか？</h4>
+      <% options = [
+        ["1", "中毛地域（県央地域：前橋市、高崎市、玉村町）"],
+        ["2", "西毛地域（富岡市、安中市、下仁田町など）"],
+        ["3", "東毛地域（桐生市、太田市、伊勢崎市、館林市など）"],
+        ["4", "北毛地域（渋川市、沼田市、中之条町、利根郡など）"]
+      ] %>
+      <% options.each_with_index do |(val, label), i| %>
+        <div class="form-check">
+          <%= f.radio_button :question3, val, id: "question3_option#{i}" %>
+          <label for="question3_option#{i}"><%= label %></label>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Submit -->
+    <div class="sindanbotan">
+      <%= f.submit "結果をみる" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="back-link">
+  <%= link_to "トップページに戻る", tweets_path %>
+</div>

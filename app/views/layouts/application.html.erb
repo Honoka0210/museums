@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+ <head>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+ 
+    <meta charset="utf-8">
+    <title>Gunma HakuLog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+ <link rel="stylesheet" href="application.scss">
+     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+  
+  </head> 
+
+<body>
+ <header>
+  <div class="container flex pop">
+   <a href""class="logo">
+   <h2><span style="color: #80BA4A;">Gunma</span> <span style="color: #5d493d;">HakuLog</span></h2>
+   </a>
+
+
+   
+
+    <nav>
+     <ul>
+      <% if user_signed_in? %>
+      <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+      <li><%= link_to "新規登録", new_user_registration_path %></li>
+      <li><%= link_to "ログイン", new_user_session_path %></li>
+      <% end %>
+     </ul>
+    </nav>
+      </ul>
+  </div>
+ </header>
+ 
+ <main>
+ <%= yield %>
+ 
+ </main>
+ <style>
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+ }
+.pop{
+  font-family: 'Poppins',sans-serif;}
+
+
+
+.container{
+    width: 90%;
+    max-width: 1120px;
+    background-color: #ffffff;
+    margin: 0 auto;
+}
+
+
+
+.flex{
+  display: flex;
+       justify-content:space-between;
+       flex-wrap:wrap:
+       align-items: center;
+       padding: 20px 0;
+       border-bottom: 1px solid #ddd;
+       background-color: #ffffff;
+       }
+
+
+# ヘッダー       
+header{
+  padding: 27px 0;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:-0.04em;
+}
+
+
+.button {
+    background-color: #095DAD;
+    border: 3px solid #095DAD;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+    color: #fff;
+    display: inline-block;
+    font-weight: 700;
+    padding: 1.25rem 4rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.botton:hover {
+    background-color: #fff;
+    color: #095DAD;
+}
+
+.main-content{display: flex;
+              gap: 40px;
+              padding: 40px 0;}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+    color: #888;
+}
+   
+ </style>
+
+</body>
+</html>
+</style>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>投稿掲示板</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .form-box, .posts {
+      background: white;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form-box h2, .posts h2 {
+      text-align: center;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="file"] {
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .post {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .post img {
+      max-width: 100%;
+      margin-top: 10px;
+      border-radius: 4px;
+    }
+
+    .delete-btn {
+      background-color: #e53935;
+      margin-top: 10px;
+    }
+
+    .delete-btn:hover {
+      background-color: #c62828;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 投稿フォーム -->
+    <div class="form-box">
+      <h2>新規投稿</h2>
+      <form id="postForm">
+        <label>タイトル：</label>
+        <input type="text" id="name" required>
+
+        <label>：</label>
+        <textarea id="message" rows="4" required></textarea>
+
+        <label>画像を選択：</label>
+        <input type="file" id="image" accept="image/*">
+
+        <button type="submit">投稿</button>
+      </form>
+    </div>
+
+    <!-- 投稿表示エリア -->
+    <div class="posts">
+      <h2>投稿一覧</h2>
+      <div id="postList"></div>
+    </div>
+  </div>
+
+  <script>
+    // 投稿データを格納
+    let posts = JSON.parse(localStorage.getItem('posts')) || [];
+
+    // 投稿表示
+    function renderPosts() {
+      const postList = document.getElementById('postList');
+      postList.innerHTML = '';
+
+      posts.forEach((post, index) => {
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post';
+
+        postDiv.innerHTML = `
+          <p><strong>${post.name}</strong></p>
+          <p>${post.message}</p>
+          ${post.image ? `<img src="${post.image}" alt="投稿画像">` : ''}
+          <button class="delete-btn" onclick="deletePost(${index})">削除</button>
+        `;
+
+        postList.appendChild(postDiv);
+      });
+    }
+
+    // 投稿処理
+    document.getElementById('postForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const imageInput = document.getElementById('image');
+      const file = imageInput.files[0];
+
+      if (!name || !message) return;
+
+      const reader = new FileReader();
+
+      reader.onloadend = function () {
+        const newPost = {
+          name,
+          message,
+          image: file ? reader.result : ''
+        };
+
+        posts.unshift(newPost); // 先頭に追加
+        localStorage.setItem('posts', JSON.stringify(posts));
+
+        document.getElementById('postForm').reset();
+        renderPosts();
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        reader.onloadend();
+      }
+    });
+
+    // 削除処理
+    function deletePost(index) {
+      if (confirm('この投稿を削除しますか？')) {
+        posts.splice(index, 1);
+        localStorage.setItem('posts', JSON.stringify(posts));
+        renderPosts();
+      }
+    }
+
+    // 初期表示
+    renderPosts();
+  </script>
+
+</body>
+</html>
+
+<br>
+<%= link_to "一覧に戻る", tweets_path %>

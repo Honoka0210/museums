@@ -1,0 +1,221 @@
+    <head>
+  <style>
+    /* 基本のリセット */
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ヒーローセクション */
+     #hero { background-image: url('自然史博物館　高画質.jpg'); 
+     background-position: center;
+     background-size: cover; 
+     color: white; 
+     text-align: center; 
+     padding: 100px 20px; 
+     border-radius: 10px; 
+     margin-bottom: 50px; }
+
+     #hero h1 { font-size: 3em;
+      margin-bottom: 20px;
+       } 
+     
+     #hero p { font-size: 1.5em; margin-bottom: 30px; } .hero-image { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); }
+
+     .highlight {
+  color: black; /* 文字色を赤に変更 */
+}
+    /* セクションのスタイル */
+    .section-title {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 30px;
+      color: #4CAF50; /* Green color for emphasis */
+    }
+
+    .text {
+      text-align: justify;
+      margin: 20px 0;
+      font-size: 1.2em;
+    }
+
+    .flex {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .column-2 {
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .column-2 img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ボタン */
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    /* 投稿エリア */
+    .tweets-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 30px;
+    }
+
+    .tweet {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .tweet h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .tweet p {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .tweet img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    /* リンク */
+    .link {
+      text-decoration: none;
+      color: #4CAF50;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    /* レスポンシブデザイン */
+    @media (max-width: 768px) {
+      .flex {
+        flex-direction: column;
+      }
+
+      .column-2 {
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- ヒーローセクション -->
+    <section id="hero">
+      <span class="highlight"><h1>発見と探究を、群馬の博物館で</h1></span>
+      <span class="highlight"><p class="pop">Find discovery and explore at Gunma's museums.</p></span>
+      <%= image_tag "自然史博物館　高画質.jpg", class: "hero-image" %>
+    </section>
+
+    <!-- セクション1 -->
+    <div>
+      <h3 class="section-title">Concept</h3>
+      <p class="text">「Gunma HakuLogu」のコンセプトは群馬県内の博物館、美術館に興味を持っていただき、<br> 博物館施設を通した学びを促進するための情報を提供することです。</p>
+
+      <div class="flex">
+        <div class="column-2">
+          <p class="text">群馬県内には、豊かなジャンルの博物館が数多く存在しており、子どもから大人まで、皆さんの興味関心に沿った学びを得ることができます。</p>
+          <p class="text">Gunma HakuLogでは、博物館施設での学びを通して、発見や交流の場を提供し、参加者の探究力を広げることを目指します。</p>
+          <p class="text">右画像：冨廣美術館（みどり市）</p>
+        </div>
+        <div class="column-2">
+          <%= image_tag "博物館　写真２.webp", size: "200x200", class: "hero-image" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- セクション2 -->
+    <div>
+      <h3 class="section-title">Service</h3>
+      <h3>1. 群馬県内博物館診断</h3>
+      <div class="flex">
+        <div class="column-2">
+          <%= image_tag "博物館写真３.jpg", size: "200x200", class: "hero-image" %>
+        </div>
+        <div class="column-2">
+          <p class="text">「Gunma HakuLogu」では、いくつかの質問に答えていただくことで、<br>あなたにおすすめの群馬県内の博物館を紹介します。</p>
+          <p class="text">・好きなテーマ：歴史、自然、アート、科学... あなたの興味はどこにありますか？</p>
+          <p class="text"> ・体験したいこと：じっくり展示を鑑賞したい...どんな過ごし方をしたいですか？</p>
+          <p class="text"> ・体験したいこと：じっくり展示を鑑賞したい...どんな過ごし方をしたいですか？</p>
+          <%= link_to "診断を始める", new_perfume_path, class: "btn" %>
+
+        </div>
+      </div>
+
+      <h3>2. 行った博物館を投稿してみる</h3>
+      <div class="flex">
+        <div class="column-2">
+          <%= image_tag "博物館　写真.webp", size: "200x200", class: "hero-image" %>
+        </div>
+        <div class="column-2">
+          <p class="text">「Gunma HakuLogu」内では、群馬県内の訪れた博物館の情報を写真や文書で投稿できます。</p>
+          <%= link_to "新規投稿へ", new_tweet_path, class: "btn" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- 投稿エリア -->
+    <div class="tweets-container">
+      <% @tweets.each do |t| %>
+        <div class="tweet">
+          <h3><%= t.title %></h3>
+          <p><strong>場所:</strong> <%= t.place %></p>
+          <p><%= t.about %></p>
+          <%= image_tag t.image_url, size: "250x200" if t.image? %>
+          <%= button_to "削除する", tweet_path(t.id), method: :delete %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</body>

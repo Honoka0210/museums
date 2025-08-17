@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>診断結果</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .intoro {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .intoro h5 {
+      font-size: 24px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .intoro p {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    .perfume-container {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .perfume-container h6 {
+      font-size: 22px;
+      color: #2a4d69;
+      margin-bottom: 10px;
+    }
+
+    .perfume-container p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .image-area {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .image-area img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="intoro">
+    <h5>診断結果</h5>
+    <p>あなたにおすすめの博物館・美術館はここ！</p>
+    <p>あなたの回答から、群馬県で以下の施設をお勧めします！</p>
+  </div>
+
+  <div class="perfume-container">
+    <% case [@perfume.question1, @perfume.question2, @perfume.question3] %>
+    <% when ["1", "1", "1"] %>
+      <h6>群馬県立歴史博物館 (高崎市)</h6>
+      <div class="image-area">
+        <img src="images/history_museum.jpg" alt="群馬県立歴史博物館の写真">
+      </div>
+      <p>群馬の旧石器時代から現代に至るまでの歴史や、人々の暮らし、文化財を豊富な資料で紹介しています。</p>
+      <p>特に、上野三碑（じょうもうさんぴ）に関する展示や、群馬ならではの埴輪（はにわ）の展示は必見です。時間を忘れて知識を深めることができるでしょう。</p>
+      <p><strong>施設ジャンル:</strong> 歴史、民俗、考古</p>
+      <p><strong>アクセス:</strong> JR高崎線「高崎駅」からバス、または車</p>
+    <% end %>
+  </div>
+
+</body>
+</html>
+<%= link_to "一覧に戻る", tweets_path %>
